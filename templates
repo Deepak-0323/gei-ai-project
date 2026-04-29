@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head><title>Generate Assignment</title></head>
+<body>
+    <h1>Generate Assignment</h1>
+    <form method="post" action="/generate">
+        Topic: <input type="text" name="topic" required>
+        <input type="submit" value="Generate">
+    </form> 
+    {% if assignment %}
+        <h2>Assignment:</h2>
+        <p>{{ assignment }}</p>
+    {% endif %}
+    <a href="/">Home</a>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head><title>AI Assignment App</title></head>
+<body>
+    <h1>AI Assignment App</h1>
+    <a href="/generate">Generate Assignment</a><br>
+    <a href="/evaluate">Evaluate Assignment</a>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head><title>Evaluate Assignment</title></head>
+<body>
+    <h1>Evaluate Assignment</h1>
+    <form method="post" action="/evaluate">
+        Student Answer: <textarea name="answer" required></textarea>
+        <input type="submit" value="Evaluate">
+    </form>
+    {% if result %}
+        <h2>Evaluation:</h2>
+        <p><strong>Feedback:</strong> {{ result.feedback }}</p>
+        <p><strong>Score:</strong> {{ result.score }}/5</p>
+        <p><strong>AI Generated:</strong> {{ result.ai_generated }}</p>
+    {% endif %}
+    <a href="/">Home</a>
+</body>
+</html>
